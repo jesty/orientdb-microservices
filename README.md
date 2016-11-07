@@ -12,7 +12,7 @@ In this project I already configured:
 
 
 ##Configuration
-Before all you must download https://github.com/jesty/orientdb-javaee and install in yout local Maven Repository:
+Before all you must download https://github.com/jesty/orientdb-javaee and install in your local Maven Repository:
 
 ```
 git clone git@github.com:jesty/orientdb-javaee.git
