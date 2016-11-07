@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.nutcore</groupId>
+            <groupId>com.nutcore</groupId>
             <artifactId>orientdb-javaee</artifactId>
             <version>1.0</version>
         </dependency>
