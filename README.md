@@ -45,3 +45,15 @@ mvn package exec:java
 When the webserver starts visit <http://localhost:8080/api/hello/davide> to create a simpe entry on database and <http://localhost:8080/api/hello> to view created entities. The application documentation is on <http://localhost:8080/api/swagger.json>
 
 Now you are ready to snoop around the code and build your real project!
+
+# Future developments
+
+I like to be complaiant to Principles of microservices (<http://samnewman.io/talks/principles-of-microservices/>) to do that I'm working on this tasks. The tasks with check are work in progress or in test.
+
+- [ ] Deployment how-to
+- [ ] Openshift integration
+- [x] Correlation ID
+- [x] Exception tracking and management
+- [ ] Metrics (<http://metrics.dropwizard.io>) integration 
+- [ ] Zero configuration clustering
+- [ ] Migrate all utility classes from the archetype to an indipendent project
