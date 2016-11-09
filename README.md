@@ -50,10 +50,11 @@ Now you are ready to snoop around the code and build your real project!
 
 I like to be complaiant to Principles of microservices (<http://samnewman.io/talks/principles-of-microservices/>) to do that I'm working on this tasks. The tasks with check are work in progress or in test.
 
-- [ ] Deployment how-to
-- [ ] Openshift integration
+- [ ] Deployment how-to
+- [x] Metrics (<http://metrics.dropwizard.io>) integration 
 - [x] Correlation ID
 - [x] Exception tracking and management
-- [ ] Metrics (<http://metrics.dropwizard.io>) integration 
-- [ ] Zero configuration clustering
+- [ ] Conqueur the world
+- [ ] Openshift integration
+- [ ] Zero configuration clustering
 - [ ] Migrate all utility classes from the archetype to an indipendent project
