@@ -11,9 +11,10 @@ import io.swagger.annotations.Api;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-import java.util.UUID;
 
 @Api("Hello")
 @Path("/hello")
@@ -21,6 +22,8 @@ import java.util.UUID;
 @Consumes(MediaType.APPLICATION_JSON)
 public class HelloResource
 {
+
+    private Logger logger = LoggerFactory.getLogger(HelloResource.class);
 
     @Inject
     OObjectDatabaseTx db;

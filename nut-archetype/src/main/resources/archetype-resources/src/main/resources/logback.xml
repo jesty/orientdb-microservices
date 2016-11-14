@@ -1,6 +1,6 @@
 <configuration debug="true">
 
-    <appender name="STDOUT"
+    <appender name="CORRELATION_ID"
               class="ch.qos.logback.core.ConsoleAppender">
 
         <encoder>
@@ -10,7 +10,7 @@
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <root level="INFO" name="${package}">
         <appender-ref ref="STDOUT"/>
     </root>
 
