@@ -3,6 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
+import com.nutcore.nut.correlationid.CorrelationIdFilter;
+import com.nutcore.nut.metrics.MetricsListener;
 import com.nutcore.orientdb.javaee.orientdb.OrientDBFilter;
 import com.nutcore.orientdb.javaee.orientdb.OrientDBJacksonProvider;
 import com.nutcore.orientdb.javaee.orientdb.OrientDBServletContextListener;
@@ -12,9 +14,13 @@ import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.FilterInfo;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 import org.jboss.resteasy.spi.ResteasyDeployment;
+import org.jboss.weld.environment.servlet.Listener;
 
 import javax.servlet.DispatcherType;
 import java.util.Arrays;
+
+import static com.nutcore.nut.correlationid.CorrelationIdFilter.CORRELATION_ID_FILTER;
+import static com.nutcore.nut.metrics.MetricsListener.METRICS_LISTENER;
 
 public class Main
 {
@@ -43,18 +49,28 @@ public class Main
         deployment.setInjectorFactoryClass("org.jboss.resteasy.cdi.CdiInjectorFactory");
         deployment.setApplicationClass(MyApplication.class.getName());
 
-        Undertow.Builder builder = Undertow.builder().addHttpListener(port, host);
+        Undertow.Builder builder = Undertow
+                .builder()
+                .addHttpListener(port, host);
 
         UndertowJaxrsServer server = new UndertowJaxrsServer().start(builder);
         DeploymentInfo deploymentInfo = server
                 .undertowDeployment(deployment)
                 .setClassLoader(Main.class.getClassLoader())
                 .addListener(Servlets.listener(OrientDBServletContextListener.class))
-                .addListeners(Servlets.listener(org.jboss.weld.environment.servlet.Listener.class))
-                .setContextPath("/api")
-                .setDeploymentName("${artifactId}")
+                .addFilter(Servlets.filter(METRICS_LISTENER, MetricsListener.class))
+                .addFilterUrlMapping(METRICS_LISTENER, "/*", DispatcherType.REQUEST)
+                .addListeners(Servlets.listener(Listener.class))
+                .addServlets(
+                        Servlets.servlet(com.codahale.metrics.servlets.MetricsServlet.class)
+                                .addMapping("/metrics"))
                 .addFilter(new FilterInfo(ORIENTDB_FILTER, OrientDBFilter.class))
-                .addFilterUrlMapping(ORIENTDB_FILTER, "/*", DispatcherType.REQUEST);
+                .addFilterUrlMapping(ORIENTDB_FILTER, "/*", DispatcherType.REQUEST)
+                .addFilter(new FilterInfo(CORRELATION_ID_FILTER, CorrelationIdFilter.class))
+                .addFilterUrlMapping(CORRELATION_ID_FILTER, "/*", DispatcherType.REQUEST)
+                .setContextPath("/api")
+                .setDeploymentName("${artifactId}");
+                        
         server.deploy(deploymentInfo);
 
     }

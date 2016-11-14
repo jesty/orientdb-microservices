@@ -9,6 +9,7 @@ import io.swagger.jaxrs.config.BeanConfig;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
+import com.nutcore.nut.httputils.CORSFilter;
 
 public class MyApplication extends Application
 {
