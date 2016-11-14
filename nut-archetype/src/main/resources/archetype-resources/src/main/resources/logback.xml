@@ -10,8 +10,8 @@
         </encoder>
     </appender>
 
-    <root level="INFO" name="${package}">
-        <appender-ref ref="STDOUT"/>
-    </root>
+    <logger level="INFO" name="${package}">
+        <appender-ref ref="CORRELATION_ID"/>
+    </logger>
 
 </configuration>
