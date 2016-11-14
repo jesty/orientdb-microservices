@@ -6,12 +6,29 @@
     <artifactId>nut</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <url>https://github.com/jesty/orientdb-microservices</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/jesty/orientdb-microservices</url>
+        <connection>scm:git:git://github.com/jesty/orientdb-microservices.git</connection>
+        <developerConnection>scm:git:git@github.com:jesty/orientdb-microservices.git</developerConnection>
+    </scm>
+
     <modules>
         <module>nut-corelationid</module>
         <module>nut-metrics</module>
         <module>nut-utils</module>
         <module>nut-archetype</module>
-  </modules>
+    </modules>
 
     <properties>
         <resteasy.version>3.0.13.Final</resteasy.version>
@@ -167,7 +184,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
 </project>

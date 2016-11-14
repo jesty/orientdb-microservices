@@ -9,21 +9,6 @@
 
   <name>nut-archetype</name>
   <description>A maven archetype to create a microservice component using OrientDB, Resteasy, Undertow, Metrics and Swagger</description>
-  <url>https://github.com/jesty/orientdb-microservices</url>
-
-  <licenses>
-    <license>
-      <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <scm>
-    <url>https://github.com/jesty/orientdb-microservices</url>
-    <connection>scm:git:git://github.com/jesty/orientdb-microservices.git</connection>
-    <developerConnection>scm:git:git@github.com:jesty/orientdb-microservices.git</developerConnection>
-  </scm>
 
   <build>
     <extensions>
