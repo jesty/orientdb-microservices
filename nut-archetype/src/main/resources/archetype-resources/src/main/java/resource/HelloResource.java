@@ -5,6 +5,7 @@ package ${package}.resource;
 
 import ${package}.domain.User;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
+import com.nutcore.nut.correlationid.CorrelationIdClientRequestFilter;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import io.swagger.annotations.Api;
 
@@ -32,7 +33,26 @@ public class HelloResource
         user.setName(username);
         User result = db.save(user);
         db.commit();
+        Client client = ClientBuilder
+                .newClient()
+                .register(new CorrelationIdClientRequestFilter());
+
+        logger.info("The correlation ID in this line must be equals to the next line");
+        client.target("http://localhost:8080/api/")
+                .path("hello")
+                .path(username)
+                .path("correlationId")
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+
         return result;
+    }
+
+    @GET
+    @Path("/{user}/correlationId")
+    public void correlationIdTest(@PathParam("user") String username)
+    {
+        logger.info("The correlation ID in this line must be equals to the previous line");
     }
 
     @GET
