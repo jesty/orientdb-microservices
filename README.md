@@ -1,6 +1,6 @@
 # orientdb-microservices
 
->>> THIS PROJECT IS AN HUGE WORK IN PROGRESS AND IT IS NO PRODUCTION READY. IF YOU WANT USE IN PRODUCTION, PLEASE CONTACT ME. FEEL FREE TO USE THE SINGOLAR COMPONENTS ASE YOU NEED <<<
+>>> THIS PROJECT IS AN HUGE WORK IN PROGRESS AND IT IS NO PRODUCTION READY. IF YOU WANT USE IN PRODUCTION, PLEASE CONTACT ME. FEEL FREE TO USE THE SINGOLAR COMPONENTS ASE YOU NEED
 
 This Maven archetype aims to create in a short time a project where you can develop production-ready RESTful web services in Java. The generated project solves the little annoying issues to configure always the same things like a database connection, a webserver, a server api and so on. 
 
