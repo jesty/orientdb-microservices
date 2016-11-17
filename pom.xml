@@ -28,7 +28,9 @@
         <module>nut-metrics</module>
         <module>nut-utils</module>
         <module>nut-archetype</module>
-    </modules>
+        <module>nut-errors</module>
+    <module>nutex</module>
+  </modules>
 
     <properties>
         <resteasy.version>3.0.13.Final</resteasy.version>

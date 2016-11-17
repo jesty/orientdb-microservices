@@ -9,6 +9,9 @@ import com.nutcore.nut.correlationid.CorrelationIdClientRequestFilter;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 import io.swagger.annotations.Api;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
@@ -27,6 +30,12 @@ public class HelloResource
 
     @Inject
     OObjectDatabaseTx db;
+
+    @GET
+    @Path("/{user}/error")
+    public User error(@PathParam("user") String username){
+        throw new RuntimeException("errore!!!");
+    }
 
     @GET
     @Path("/{user}")
